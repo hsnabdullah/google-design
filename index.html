@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Google</title>
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/fa9a16eb6f.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <style type="text/css">
+      body,
+      input,
+      button {
+        font-size: 14px;
+        font-family: arial, sans-serif;
+        color: #202124;
+      }
+      a {
+        text-decoration: none;
+        color: #000;
+      }
+      a:hover {
+        text-decoration: underline;
+        color: #70757a;
+        transition: all 0.3s ease;
+      }
+      .h_top,
+      .h_top_link_block,
+      .h_top_user_mangement,
+      .h_top_user_mangement > div,
+      .h_top_user_mangement a,
+      section,
+      .hero_search_box,
+      .svg_icon_box,
+      footer .f_bottom .f_bottom_item_right,
+      footer .f_bottom .f_bottom_item_left {
+        display: flex;
+        align-items: center;
+      }
+      .h_top {
+        padding: 6px 12px;
+      }
+      .h_top_link_block {
+        padding-right: 15px;
+        width: 100%;
+        justify-content: flex-end;
+      }
+      .h_top_link_block a {
+        color: rgba(0, 0, 0, 0.87);
+        padding-left: 15px;
+        font: 13px/27px Roboto, Arial, sans-serif;
+      }
+      .h_top_user_mangement > div {
+        height: 48px;
+        width: 48px;
+        border-radius: 50px;
+        justify-content: center;
+      }
+      .h_top_user_mangement a {
+        border-radius: 50px;
+        height: 40px;
+        width: 40px;
+        justify-content: center;
+      }
+      .h_top_user_mangement a:hover {
+        background: #eee;
+      }
+      .h_top_user_mangement .h_top_menu img {
+        width: 18px;
+      }
+      .h_top_user_img img {
+        height: 35px;
+        width: 35px;
+        object-fit: cover;
+        border-radius: 50px;
+      }
+      section {
+        width: 100%;
+        padding: 0 20px;
+        row-gap: 20px;
+        flex-direction: column;
+      }
+      section .logo {
+        max-height: 92px;
+        min-height: 92px;
+        position: relative;
+      }
+      section .logo img {
+        width: 100%;
+        height: 100%;
+      }
+      .hero_search_box {
+        padding: 5px 8px 6px 14px;
+        height: 48px;
+        background: #fff;
+        border: 1px solid #dfe1e5;
+        box-shadow: none;
+        border-radius: 24px;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 584px;
+        transition: all 0.3s ease;
+      }
+      .hero_search_box:hover {
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        border-color: #fff0;
+      }
+      .hero_search_box input {
+        border: 0;
+        font-family: arial, sans-serif;
+        line-height: 22px;
+        margin-bottom: 8px;
+        width: 100%;
+        margin: 0 12px;
+      }
+      input:focus {
+        outline: none;
+      }
+      .svg_icon svg {
+        height: 20px;
+        width: 20px;
+        margin-top: 3px;
+      }
+      .svg_icon,
+      .svg_icon_box svg {
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+      }
+      .svg_search_icon {
+        padding: 0 8px;
+      }
+      .button_box {
+        display: flex;
+        row-gap: 20px;
+      }
+
+      .button_box button {
+        background-color: #f8f9fa;
+        border: 1px solid #f8f9fa;
+        border-radius: 4px;
+        color: #3c4043;
+        font-family: arial, sans-serif;
+        font-size: 14px;
+        margin: 11px 6px;
+        padding: 0 16px;
+        line-height: 27px;
+        height: 36px;
+        text-align: center;
+        transition: all 0.3s ease;
+      }
+      .button_box button:hover {
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+        background-color: #f8f9fa;
+        border: 1px solid #dadce0;
+        color: #202124;
+      }
+      .language_area {
+        font-size: 13px;
+        color: #4d5156;
+        margin-bottom: 24px;
+      }
+      .language_area a {
+        color: #1a0dab;
+        padding: 0 5px;
+      }
+
+      footer {
+        background: #f2f2f2;
+        color: #70757a;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+      footer a {
+        color: #70757a;
+      }
+      footer .f_top {
+        padding: 10px 30px;
+        border-bottom: 1px solid #dadce0;
+      }
+      footer .f_top p {
+        font-size: 15px;
+      }
+      footer .f_bottom {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 20px;
+      }
+      footer .f_bottom a {
+        padding: 15px;
+      }
+      footer .f_bottom .f_bottom_item_left {
+        flex-wrap: wrap;
+      }
+      @media only screen and (max-width: 1200px) {
+        footer .f_bottom {
+          justify-content: space-evenly;
+        }
+      }
+
+      @media only screen and (max-width: 999px) {
+        body,
+        input,
+        button {
+          font-size: 11px;
+        }
+        footer .f_top p {
+          font-size: 12px;
+        }
+        .h_top_link_block a {
+          font: 11px/27px Roboto, Arial, sans-serif;
+        }
+        .h_top_user_mangement > div {
+          height: 40px;
+          width: 40px;
+        }
+        .h_top_user_mangement .h_top_menu img {
+          width: 13px;
+        }
+        .h_top_user_img img {
+          height: 30px;
+          width: 30px;
+        }
+        .h_top_link_block {
+          padding-right: 5px;
+        }
+        .language_area {
+          font-size: 11px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Start -->
+    <div class="h_top">
+      <div class="h_top_link_block">
+        <a href="https://mail.google.com/mail/&amp;ogbl"> Gmail </a>
+        <a href="https://www.google.com/imghp?hl=en&amp;ogbl"> Images </a>
+      </div>
+      <div class="h_top_user_mangement">
+        <div class="h_top_menu">
+          <a href=""><img src="menu_button.png" alt="Menu Img" /></a>
+        </div>
+        <div class="h_top_user_img">
+          <a href=""><img src="./hsn.jpg" alt="User Images" /></a>
+        </div>
+      </div>
+    </div>
+    <!-- Header End -->
+
+    <!-- Hero Section Start-->
+    <section>
+      <div class="logo"><img src="google_logo.png" alt="Google Img" /></div>
+      <div class="hero_search_box">
+        <div class="svg_icon">
+          <svg
+            focusable="false"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+              fill="
+					#9aa0a6"
+            ></path>
+          </svg>
+        </div>
+        <input type="text" id="search" name="search" placeholder="" />
+        <div class="svg_icon_box ms-auto">
+          <div class="svg_search_icon">
+            <svg
+              class="goxjub"
+              focusable="false"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill="#4285f4"
+                d="m12 15c1.66 0 3-1.31 3-2.97v-7.02c0-1.66-1.34-3.01-3-3.01s-3 1.34-3 3.01v7.02c0 1.66 1.34 2.97 3 2.97z"
+              ></path>
+              <path fill="#34a853" d="m11 18.08h2v3.92h-2z"></path>
+              <path
+                fill="#fbbc05"
+                d="m7.05 16.87c-1.27-1.33-2.05-2.83-2.05-4.87h2c0 1.45 0.56 2.42 1.47 3.38v0.32l-1.15 1.18z"
+              ></path>
+              <path
+                fill="#ea4335"
+                d="m12 16.93a4.97 5.25 0 0 1 -3.54 -1.55l-1.41 1.49c1.26 1.34 3.02 2.13 4.95 2.13 3.87 0 6.99-2.92 6.99-7h-1.99c0 2.92-2.24 4.93-5 4.93z"
+              ></path>
+            </svg>
+          </div>
+          <div class="svg_search_icon">
+            <svg
+              class="Gdd5U"
+              focusable="false"
+              viewBox="0 0 192 192"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect fill="none" height="192" width="192"></rect>
+              <g>
+                <circle fill="#34a853" cx="144.07" cy="144" r="16"></circle>
+                <circle fill="#4285f4" cx="96.07" cy="104" r="24"></circle>
+                <path
+                  fill="#ea4335"
+                  d="M24,135.2c0,18.11,14.69,32.8,32.8,32.8H96v-16l-40.1-0.1c-8.8,0-15.9-8.19-15.9-17.9v-18H24V135.2z"
+                ></path>
+                <path
+                  fill="#fbbc05"
+                  d="M168,72.8c0-18.11-14.69-32.8-32.8-32.8H116l20,16c8.8,0,16,8.29,16,18v30h16V72.8z"
+                ></path>
+                <path
+                  fill="#4285f4"
+                  d="M112,24l-32,0L68,40H56.8C38.69,40,24,54.69,24,72.8V92h16V74c0-9.71,7.2-18,16-18h80L112,24z"
+                ></path>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="button_box">
+        <button>Google Search</button>
+        <button>I'm Feeling Lucky</button>
+      </div>
+      <div class="d-flex language_area" id="SIvCob">
+        Google offered in:
+        <a
+          dir="rtl"
+          href="https://www.google.com/setprefs?sig=0_q69wvC0QpzPuKfjtF4UubimjKUU%3D&amp;hl=ur&amp;source=homepage&amp;sa=X&amp;ved=0ahUKEwjr9J2dxLqBAxWK-2EKHfo2AoEQ2ZgBCBQ"
+          >اردو</a
+        >
+        <a
+          dir="rtl"
+          href="https://www.google.com/setprefs?sig=0_q69wvC0QpzPuKfjtF4UubimjKUU%3D&amp;hl=ps&amp;source=homepage&amp;sa=X&amp;ved=0ahUKEwjr9J2dxLqBAxWK-2EKHfo2AoEQ2ZgBCBU"
+          >پښتو</a
+        >
+        <a
+          dir="rtl"
+          href="https://www.google.com/setprefs?sig=0_q69wvC0QpzPuKfjtF4UubimjKUU%3D&amp;hl=sd&amp;source=homepage&amp;sa=X&amp;ved=0ahUKEwjr9J2dxLqBAxWK-2EKHfo2AoEQ2ZgBCBY"
+          >سنڌي</a
+        >
+      </div>
+    </section>
+    <!-- Hero Section End-->
+
+    <!-- Footer Start -->
+    <footer>
+      <div class="f_top">
+        <p class="mb-0">Pakistan</p>
+      </div>
+      <div class="f_bottom">
+        <div class="f_bottom_item_left">
+          <a
+            href="https://about.google/?utm_source=google-PK&amp;utm_medium=referral&amp;utm_campaign=hp-footer&amp;fg=1"
+          >
+            About
+          </a>
+          <a
+            href="https://www.google.com/intl/en_pk/ads/?subid=ww-ww-et-g-awa-a-g_hpafoot1_1!o2&amp;utm_source=google.com&amp;utm_medium=referral&amp;utm_campaign=google_hpafooter&amp;fg=1"
+          >
+            Advertising
+          </a>
+          <a
+            href="https://www.google.com/services/?subid=ww-ww-et-g-awa-a-g_hpbfoot1_1!o2&amp;utm_source=google.com&amp;utm_medium=referral&amp;utm_campaign=google_hpbfooter&amp;fg=1"
+          >
+            Business
+          </a>
+          <a
+            href="https://about.google/?utm_source=google-PK&amp;utm_medium=referral&amp;utm_campaign=hp-footer&amp;fg=1"
+          >
+            How Search works
+          </a>
+        </div>
+        <div class="f_bottom_item_right">
+          <a href="https://policies.google.com/privacy?hl=en-PK&amp;fg=1">
+            Privacy
+          </a>
+          <a href="https://policies.google.com/terms?hl=en-PK&amp;fg=1">
+            Terms
+          </a>
+          <a href="https://www.google.com/preferences?hl=en-PK&amp;fg=1">
+            Settings
+          </a>
+        </div>
+      </div>
+    </footer>
+    <!-- Footer End -->
+    <!-- Bootstrap Script -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
